@@ -30,6 +30,15 @@
     </item>
     <item
         is-multidex="true"
+        jar="C:\Users\game_dude\Documents\GitHub\MyStarChart\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-maps\9.8.0\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="122ec9237acd8a57d974b9d529987f1ee6ca5aea">
+        <dex dex="C:\Users\game_dude\Documents\GitHub\MyStarChart\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-maps-9.8.0_04234f7e03806bc0d897ebf58bfee54aa9faf70c\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
         jar="C:\Users\game_dude\Documents\GitHub\MyStarChart\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\25.0.0\jars\classes.jar"
         jumboMode="true"
         optimize="true"
@@ -43,7 +52,7 @@
         jumboMode="true"
         optimize="true"
         revision="25.0.0"
-        sha1="0a4b64c69ad32c84a964e9309023ca0124b3d933">
+        sha1="b6c09e5e3866bedcee88b473929dfe3095fff8bc">
         <dex dex="C:\Users\game_dude\Documents\GitHub\MyStarChart\app\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run_d553163a5cdaea99286b5c0ef7746c67ca0e5656\classes.dex" />
     </item>
     <item
@@ -70,7 +79,7 @@
         jumboMode="true"
         optimize="true"
         revision="25.0.0"
-        sha1="7142f96a48f8bb1197988963dbb302fa86246878">
+        sha1="234345e909af50c79083d045666c3b5060bc5415">
         <dex dex="C:\Users\game_dude\Documents\GitHub\MyStarChart\app\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run-bootstrap_d5baa76ff5825a3e979c07ac5f458b10e37fb79d\classes.dex" />
     </item>
     <item
@@ -81,6 +90,24 @@
         revision="25.0.0"
         sha1="75b1f366ff0bbc78f8b1f7cf0dc82e7c53afef6a">
         <dex dex="C:\Users\game_dude\Documents\GitHub\MyStarChart\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-compat-25.0.0_05eaf3fcc9bffc25ccad554a1bbe71991c84bed3\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\game_dude\Documents\GitHub\MyStarChart\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-base\9.8.0\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="7e92aadd0697922316d1395c1887a23aebec640a">
+        <dex dex="C:\Users\game_dude\Documents\GitHub\MyStarChart\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-base-9.8.0_f9663f0198924a214ddb44806d24104f411e4907\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\game_dude\Documents\GitHub\MyStarChart\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-tasks\9.8.0\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="bf2e1838e4428616c1aa26edf43de72b5b99bf84">
+        <dex dex="C:\Users\game_dude\Documents\GitHub\MyStarChart\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-tasks-9.8.0_c6b4afb062d58ac2c9e4678367d1ec76260a9760\classes.dex" />
     </item>
     <item
         is-multidex="true"
@@ -99,6 +126,15 @@
         revision="25.0.0"
         sha1="4ccbcda5c72027c7f7c14be9ff8640d9cb0d8da0">
         <dex dex="C:\Users\game_dude\Documents\GitHub\MyStarChart\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-core-utils-25.0.0_a3a5f4daa56a712ac8fbc56e3d38e2ce24202c39\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\game_dude\Documents\GitHub\MyStarChart\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-basement\9.8.0\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="9f6d236bac26d02b410e4ee186ba517ace5ee661">
+        <dex dex="C:\Users\game_dude\Documents\GitHub\MyStarChart\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-basement-9.8.0_a34cf0b836e89482a45fa42153c72a91db79cffb\classes.dex" />
     </item>
     <item
         is-multidex="true"

@@ -86,4 +86,30 @@
         android:layout_alignParentStart="true"
         android:id="@+id/choose_dateTime_btn" />
 
+    <EditText
+        android:layout_width="80dp"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:hint="City/Text"
+        android:ems="10"
+        android:id="@+id/userBLocTxt"
+        android:textSize="14sp"
+        android:layout_alignBaseline="@+id/choose_dateTime_btn"
+        android:layout_alignBottom="@+id/choose_dateTime_btn"
+        android:layout_toRightOf="@+id/choose_dateTime_btn"
+        android:layout_toEndOf="@+id/choose_dateTime_btn" />
+
+    <EditText
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:hint="State/Country"
+        android:ems="10"
+        android:id="@+id/userBCounTxt"
+        android:textSize="14sp"
+        android:layout_alignBaseline="@+id/userBLocTxt"
+        android:layout_alignBottom="@+id/userBLocTxt"
+        android:layout_toRightOf="@+id/userBLocTxt"
+        android:layout_toEndOf="@+id/userBLocTxt" />
+
 </RelativeLayout>

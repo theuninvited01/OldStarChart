@@ -21,6 +21,8 @@ public class MyStarChart extends AppCompatActivity {
     EditText userBdate;
     EditText userBtimeLbl;
     EditText userBtime;
+    EditText userBLoc;
+    EditText userBCoun;
     Button selectDateTimeBtn;
     DatePicker userBDatePicker;
     TimePicker userBTimePicker;
@@ -36,6 +38,8 @@ public class MyStarChart extends AppCompatActivity {
         userBdate = (EditText) findViewById(R.id.userBd);
         userBtimeLbl = (EditText) findViewById(R.id.userBtLbl);
         userBtime = (EditText) findViewById(R.id.userBtime);
+        userBLoc = (EditText) findViewById(R.id.userBLocTxt);
+        userBCoun = (EditText) findViewById(R.id.userBCounTxt);
         selectDateTimeBtn = (Button) findViewById(R.id.choose_dateTime_btn);
         selectDateTimeBtn.setText("Select Birthdate");
         userBDatePicker = (DatePicker) findViewById(R.id.userBdPick);
@@ -44,6 +48,8 @@ public class MyStarChart extends AppCompatActivity {
         userBtimeLbl.setVisibility(View.INVISIBLE);
         userBtime.setVisibility(View.INVISIBLE);
         userBTimePicker.setVisibility(View.INVISIBLE);
+        userBLoc.setVisibility(View.INVISIBLE);
+        userBCoun.setVisibility(View.INVISIBLE);
         userBdateLbl.setFocusable(false);
         userBdate.setFocusable(false);
         userBtimeLbl.setFocusable(false);
@@ -68,13 +74,20 @@ public class MyStarChart extends AppCompatActivity {
         selectDateTimeBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(bDate != null) {
+                if(bDate != null && bTime == null) {
                     userBdate.setText(bDate);
                     selectDateTimeBtn.setText("Select Birth Time");
                     userBDatePicker.setVisibility(View.INVISIBLE);
                     userBtimeLbl.setVisibility(View.VISIBLE);
                     userBtime.setVisibility(View.VISIBLE);
                     userBTimePicker.setVisibility(View.VISIBLE);
+                } else if(bDate != null && bTime != null) {
+                    userBtime.setText(bTime);
+                    userBtimeLbl.setVisibility(View.VISIBLE);
+                    selectDateTimeBtn.setText("Enter Birthplace");
+                    userBLoc.setVisibility(View.VISIBLE);
+                    userBCoun.setVisibility(View.VISIBLE);
+                    userBLoc.setFocusable(true);
                 }
             }
         });
