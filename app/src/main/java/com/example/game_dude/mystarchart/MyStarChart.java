@@ -1,19 +1,29 @@
 package com.example.game_dude.mystarchart;
 
-import android.app.DatePickerDialog;
+import android.content.Context;
+import android.location.Address;
+import android.location.Geocoder;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.TimePicker;
 
+import com.google.android.gms.maps.model.LatLng;
+
+import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
+import java.util.List;
+import java.util.Locale;
 
 public class MyStarChart extends AppCompatActivity {
 
@@ -22,12 +32,16 @@ public class MyStarChart extends AppCompatActivity {
     EditText userBtimeLbl;
     EditText userBtime;
     EditText userBLoc;
-    EditText userBCoun;
+
     Button selectDateTimeBtn;
     DatePicker userBDatePicker;
     TimePicker userBTimePicker;
+    Spinner userStateSpin;
     String bDate;
     String bTime;
+    String userBtown;
+    String userBnat;
+    Context c;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,20 +53,25 @@ public class MyStarChart extends AppCompatActivity {
         userBtimeLbl = (EditText) findViewById(R.id.userBtLbl);
         userBtime = (EditText) findViewById(R.id.userBtime);
         userBLoc = (EditText) findViewById(R.id.userBLocTxt);
-        userBCoun = (EditText) findViewById(R.id.userBCounTxt);
+
         selectDateTimeBtn = (Button) findViewById(R.id.choose_dateTime_btn);
         selectDateTimeBtn.setText("Select Birthdate");
         userBDatePicker = (DatePicker) findViewById(R.id.userBdPick);
         userBTimePicker = (TimePicker) findViewById(R.id.userBtPicker);
+        userStateSpin = (Spinner) findViewById(R.id.stateList);
 
         userBtimeLbl.setVisibility(View.INVISIBLE);
         userBtime.setVisibility(View.INVISIBLE);
         userBTimePicker.setVisibility(View.INVISIBLE);
         userBLoc.setVisibility(View.INVISIBLE);
-        userBCoun.setVisibility(View.INVISIBLE);
+        userStateSpin.setVisibility(View.INVISIBLE);
+        ArrayAdapter<CharSequence> adapt = ArrayAdapter.createFromResource(this,R.array.stateList,android.R.layout.simple_spinner_item);
+        adapt.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        userStateSpin.setAdapter(adapt);
         userBdateLbl.setFocusable(false);
         userBdate.setFocusable(false);
         userBtimeLbl.setFocusable(false);
+        userBtime.setFocusable(false);
 
         userBDatePicker.init(1972, 0, 1, new DatePicker.OnDateChangedListener() {
             @Override
@@ -74,26 +93,65 @@ public class MyStarChart extends AppCompatActivity {
         selectDateTimeBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(bDate != null && bTime == null) {
+                if(bDate != null && bTime == null && userBtown == null) {
                     userBdate.setText(bDate);
                     selectDateTimeBtn.setText("Select Birth Time");
                     userBDatePicker.setVisibility(View.INVISIBLE);
                     userBtimeLbl.setVisibility(View.VISIBLE);
                     userBtime.setVisibility(View.VISIBLE);
                     userBTimePicker.setVisibility(View.VISIBLE);
-                } else if(bDate != null && bTime != null) {
+                } else if(bDate != null && bTime != null && userBtown == null) {
                     userBtime.setText(bTime);
                     userBtimeLbl.setVisibility(View.VISIBLE);
+                    userBTimePicker.setVisibility(View.INVISIBLE);
                     selectDateTimeBtn.setText("Enter Birthplace");
                     userBLoc.setVisibility(View.VISIBLE);
-                    userBCoun.setVisibility(View.VISIBLE);
                     userBLoc.setFocusable(true);
+                    userStateSpin.setVisibility(View.VISIBLE);
+                    userBtown = userBLoc.getText().toString();
+                } else if(bDate != null && bTime != null && userBtown != null) {
+                    
                 }
             }
         });
 
     }
 
+/*    if(Geocoder.isPresent()){
+    try {
+        String location = "theNameOfTheLocation";
+        Geocoder gc = new Geocoder(this);
+        List<Address> addresses= gc.getFromLocationName(location, 5); // get the found Address Objects
+
+        List<LatLng> ll = new ArrayList<LatLng>(addresses.size()); // A list to save the coordinates if they are available
+        for(Address a : addresses){
+            if(a.hasLatitude() && a.hasLongitude()){
+                ll.add(new LatLng(a.getLatitude(), a.getLongitude()));
+            }
+        }
+    } catch (IOException e) {
+         // handle the exception
+    }*/
+
+    public List<LatLng> getUserBLoc(String city, String state) {
+        if (Geocoder.isPresent()) {
+            try {
+                String location = (city+", "+state);
+                Geocoder gc = new Geocoder(this, Locale.getDefault());
+                List<Address> adds = gc.getFromLocationName(location, 5);
+                List<LatLng> ll = new ArrayList<LatLng>(adds.size());
+                for (Address a : adds) {
+                    if (a.hasLatitude() && a.hasLongitude()) {
+                        ll.add(new LatLng(a.getLatitude(), a.getLongitude()));
+                    }
+                }
+                return ll;
+            } catch (IOException e) {
+
+            }
+        }
+        return null;
+    }
     public int getUserSign(Date bDate) {
 
         Calendar c = GregorianCalendar.getInstance();

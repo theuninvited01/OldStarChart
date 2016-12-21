@@ -87,10 +87,10 @@
         android:id="@+id/choose_dateTime_btn" />
 
     <EditText
-        android:layout_width="80dp"
+        android:layout_width="120dp"
         android:layout_height="wrap_content"
         android:inputType="textPersonName"
-        android:hint="City/Text"
+        android:hint="City/Town"
         android:ems="10"
         android:id="@+id/userBLocTxt"
         android:textSize="14sp"
@@ -99,17 +99,13 @@
         android:layout_toRightOf="@+id/choose_dateTime_btn"
         android:layout_toEndOf="@+id/choose_dateTime_btn" />
 
-    <EditText
-        android:layout_width="100dp"
+    <Spinner
         android:layout_height="wrap_content"
-        android:inputType="textPersonName"
-        android:hint="State/Country"
-        android:ems="10"
-        android:id="@+id/userBCounTxt"
-        android:textSize="14sp"
-        android:layout_alignBaseline="@+id/userBLocTxt"
-        android:layout_alignBottom="@+id/userBLocTxt"
+        android:id="@+id/stateList"
         android:layout_toRightOf="@+id/userBLocTxt"
-        android:layout_toEndOf="@+id/userBLocTxt" />
+        android:layout_toEndOf="@+id/userBLocTxt"
+        android:layout_alignTop="@+id/userBLocTxt"
+        android:layout_alignBottom="@+id/userBLocTxt"
+        android:layout_width="80dp" />
 
 </RelativeLayout>
