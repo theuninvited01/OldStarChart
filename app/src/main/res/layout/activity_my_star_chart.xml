@@ -89,7 +89,7 @@
     <EditText
         android:layout_width="120dp"
         android:layout_height="wrap_content"
-        android:inputType="textPersonName"
+        android:inputType="text"
         android:hint="City/Town"
         android:ems="10"
         android:id="@+id/userBLocTxt"
@@ -107,5 +107,30 @@
         android:layout_alignTop="@+id/userBLocTxt"
         android:layout_alignBottom="@+id/userBLocTxt"
         android:layout_width="80dp" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:text="BirthPlace:"
+        android:ems="10"
+        android:textSize="14sp"
+        android:width="80dp"
+        android:layout_below="@+id/userBtLbl"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:id="@+id/userBpLbl" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:text="City/Town"
+        android:ems="10"
+        android:textSize="14sp"
+        android:width="100dp"
+        android:layout_toRightOf="@+id/userBpLbl"
+        android:layout_below="@+id/userBtime"
+        android:id="@+id/userBtownTxt" />
 
 </RelativeLayout>

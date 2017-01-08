@@ -6,6 +6,7 @@ import android.location.Geocoder;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
@@ -32,6 +33,8 @@ public class MyStarChart extends AppCompatActivity {
     EditText userBtimeLbl;
     EditText userBtime;
     EditText userBLoc;
+    EditText userBpLbl;
+    EditText userBpTxt;
 
     Button selectDateTimeBtn;
     DatePicker userBDatePicker;
@@ -41,6 +44,7 @@ public class MyStarChart extends AppCompatActivity {
     String bTime;
     String userBtown;
     String userBnat;
+    String userBstat;
     Context c;
 
     @Override
@@ -53,6 +57,8 @@ public class MyStarChart extends AppCompatActivity {
         userBtimeLbl = (EditText) findViewById(R.id.userBtLbl);
         userBtime = (EditText) findViewById(R.id.userBtime);
         userBLoc = (EditText) findViewById(R.id.userBLocTxt);
+        userBpLbl = (EditText)findViewById(R.id.userBpLbl);
+        userBpTxt = (EditText)findViewById(R.id.userBtownTxt);
 
         selectDateTimeBtn = (Button) findViewById(R.id.choose_dateTime_btn);
         selectDateTimeBtn.setText("Select Birthdate");
@@ -64,6 +70,8 @@ public class MyStarChart extends AppCompatActivity {
         userBtime.setVisibility(View.INVISIBLE);
         userBTimePicker.setVisibility(View.INVISIBLE);
         userBLoc.setVisibility(View.INVISIBLE);
+        userBpLbl.setVisibility(View.INVISIBLE);
+        userBpTxt.setVisibility(View.INVISIBLE);
         userStateSpin.setVisibility(View.INVISIBLE);
         ArrayAdapter<CharSequence> adapt = ArrayAdapter.createFromResource(this,R.array.stateList,android.R.layout.simple_spinner_item);
         adapt.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -90,17 +98,29 @@ public class MyStarChart extends AppCompatActivity {
             }
         });
 
+        userStateSpin.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                userBstat = userStateSpin.getItemAtPosition(i).toString();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+
         selectDateTimeBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(bDate != null && bTime == null && userBtown == null) {
+                if(userBtime.getVisibility() == View.INVISIBLE && userBDatePicker.getVisibility() == View.VISIBLE) {
                     userBdate.setText(bDate);
                     selectDateTimeBtn.setText("Select Birth Time");
                     userBDatePicker.setVisibility(View.INVISIBLE);
                     userBtimeLbl.setVisibility(View.VISIBLE);
                     userBtime.setVisibility(View.VISIBLE);
                     userBTimePicker.setVisibility(View.VISIBLE);
-                } else if(bDate != null && bTime != null && userBtown == null) {
+                } else if(userBTimePicker.getVisibility() == View.VISIBLE && userBDatePicker.getVisibility() == View.INVISIBLE) {
                     userBtime.setText(bTime);
                     userBtimeLbl.setVisibility(View.VISIBLE);
                     userBTimePicker.setVisibility(View.INVISIBLE);
@@ -108,8 +128,17 @@ public class MyStarChart extends AppCompatActivity {
                     userBLoc.setVisibility(View.VISIBLE);
                     userBLoc.setFocusable(true);
                     userStateSpin.setVisibility(View.VISIBLE);
-                    userBtown = userBLoc.getText().toString();
-                } else if(bDate != null && bTime != null && userBtown != null) {
+                } else if(userBpLbl.getVisibility() == View.INVISIBLE && userBpTxt.getVisibility() == View.INVISIBLE && userBLoc.getVisibility() == View.VISIBLE) {
+                    String userBCityTxt = ((EditText)findViewById(R.id.userBLocTxt)).getText().toString();
+                    //String fname = ((EditText)findViewById(R.id.txtFirstName)).getText().toString();
+                    selectDateTimeBtn.setText("Review Data");
+                    userBpLbl.setVisibility(View.VISIBLE);
+                    userBpTxt.setVisibility(View.VISIBLE);
+                    userBnat = (userBCityTxt+", "+userBstat);
+                    userBpTxt.setText(userBnat);
+                } else if(selectDateTimeBtn.getText() == "Review Data") {
+                    userBpLbl.setVisibility(View.INVISIBLE);
+                    userBpTxt.setVisibility(View.INVISIBLE);
                     
                 }
             }
